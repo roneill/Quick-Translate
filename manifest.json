@@ -1,0 +1,17 @@
+
+{
+  "name": "Translate",
+  "version": "1.0",
+  "description": "The first extension that I made.",
+  "browser_action": {
+  },
+  "background_page": "background.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["jquery.js", "selection.js"]
+    }
+  ],
+  "permissions": [
+  ]
+}

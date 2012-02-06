@@ -1,0 +1,35 @@
+
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+    chrome.extension.onRequest.addListener(
+	function(request, sender, sendResponse) {
+	    ajaxTranslate(request.text, sendResponse);
+	});
+
+function ajaxTranslate(text, callback) {
+	var p = {};
+	p.appid = "API KEY";
+	p.to = "en";
+	p.from = "es";
+	p.text = text;
+	$.ajax({
+		url: 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate',
+		data: p,
+		dataType: 'jsonp',
+		jsonp: 'oncomplete',
+		complete: function(request, status) {
+		},
+		success: callback
+		,
+		error: function(request, status, error) {
+			alert('error: status-'+status+',desc-'+error);
+		}
+	});
+}
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
